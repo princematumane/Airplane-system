@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Members </title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap1.min.css" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style1.css" />
+	
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"/>
+	
+</head>
+
+<body>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					 <div class="col-md-4">
+						<div class="booking-cta">
+							<h1>ADD YOUR TRAVELASS HERE!</h1>
+							<p></p>
+						</div> 
+					</div>
+					<div class="col-md-7 col-md-offset-1">
+						<div class="booking-form">
+						
+						<div class= "subtitle-form" >
+							<h3>PROVIDE DETAILS BELOW </h3>
+						</div>
+							
+							   <form method="POST" id="insert_form">
+									<div class="table-repsonsive">
+										 <span id="error"></span>
+										 <table class="table table-bordered" id="item_table">
+											  <tr>
+											   <th>Names as per ID</th>
+											   <th>ID Number</th>
+											   <th>Title</th>
+											   <th>Age Group</th>
+											   <th><button type="button" name="add" class="btn btn-success btn-sm add"><span class="glyphicon glyphicon-plus"></span></button></th>
+											  </tr>
+										 </table>
+										  <button type="submit" name="submit" class="submit-btn" value="Insert"> Submit</button>
+									</div>
+							   </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery-migrate.min.js"></script>
+</body>
+
+</html>
+
+
+<script>
+$(document).ready(function(){
+ 
+ $(document).on('click', '.add', function(){
+  var html = '';
+  html += '<tr>';
+  html += '<td><input type="text" name="member_name[]" class="form-control member_name" /></td>';
+  html += '<td><input type="number" name="member_idNum[]" class="form-control member_idNum" /></td>';
+  html += '<td><select name="member_title[]" class="form-control member_title"> <option value="none">Title</option>  <option value="Mr">Mr</option> <option value="Mrs">Mrs</option> <option value="Miss">Miss</option></select></td>';
+  html += '<td><select name="member_ageGroup[]" class="form-control member_ageGroup"> <option value="none">Age Group</option>  <option value="adult">adult</option> <option value="Children">Children</option> </select></td>';
+  html += '<td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="glyphicon glyphicon-minus"></span></button></td></tr>';
+  $('#item_table').append(html);
+ });
+ 
+ $(document).on('click', '.remove', function(){
+  $(this).closest('tr').remove();
+ });
+ 
+ $('#insert_form').on('submit', function(event){
+  event.preventDefault();
+  var error = '';
+  $('.member_name').each(function(){
+   var count = 1;
+   if($(this).val() == '')
+   {
+    error += "<p>Enter Member Name at "+count+" Row</p>";
+    return false;
+   }
+   count = count + 1;
+  });
+  
+  $('.member_idNum').each(function(){
+   var count = 1;
+   if($(this).val() == '')
+   {
+    error += "<p>Enter Member Identity Number at "+count+" Row</p>";
+    return false;
+   }
+   count = count + 1;
+  });
+  
+  $('.member_title').each(function(){
+   var count = 1;
+   if($(this).val() == 'none')
+   {
+    error += "<p>Select Member Title at "+count+" Row</p>";
+    return false;
+   }
+   count = count + 1;
+  });
+    $('.member_ageGroup').each(function(){
+   var count = 1;
+   if($(this).val() == 'none')
+   {
+    error += "<p>Select Member Age Group at "+count+" Row</p>";
+    return false;
+   }
+   count = count + 1;
+  });
+  
+  var form_data = $(this).serialize();
+  if(error == '')
+  {
+  //alert(form_data);
+	   $.ajax({
+		type:"POST",
+		url:"MemberInsertData.php",
+		data:form_data,
+		success: function(msg)
+		{
+		    //alert(msg);
+		 if(msg == 'ok')
+		 {
+		  $('#item_table').find("tr:gt(0)").remove();
+		  $('#error').html('<div class="alert alert-success">Member Flight Booked</div>');
+		 }else{
+		  $('#error').html('<div class="alert alert-success">Member Flight Not Booked</div>');
+		 }
+		}
+	   });
+  }
+  else
+  {
+   $('#error').html('<div class="alert alert-danger">'+error+'</div>');
+  }
+ });
+ 
+});
+</script>

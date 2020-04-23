@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>LOGIN </title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap1.min.css" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style1.css" />
+
+</head>
+
+<body>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+				 <div class="col-md-4">
+						<div class="booking-cta">
+							<h1>LOGGIN</h1>
+							<p></p>
+						</div> 
+					</div>
+					<div class="col-md-7 col-md-offset-1">
+						<div class="booking-form">
+							<div class= "subtitle-form" >
+								<h3>PROVIDE DETAILS BELOW </h3>
+							</div>
+							<form role="form" method="POST" class="login-form" id="login-form">
+								<div class="row">
+									<div class="col-md-6" id = "Username">
+										<div class="form-group">
+											<span class="form-label">Email</span>
+											<input class="form-control" name ="email" type="email" required>
+										</div>
+									</div>
+									<div class="col-md-6" id = "password">
+										<div class="form-group">
+											<span class="form-label">Password</span>
+											<input class="form-control" name ="password" type="password"  required>
+										</div>
+									</div>
+								</div>
+								<div id="response"></div>
+								<div class="form-btn" id = "login_btn">	
+									<button type="submit" class="submit-btn">LOGIN </button>
+								</div>
+							</form>
+							<div class = "formLink" id = "register_Btn">	
+								<a href="register.html"> Create an account. </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		  <script src="lib/jquery/jquery.min.js"></script>
+        <script src="lib/jquery/jquery-migrate.min.js"></script>
+	  <script src="js/login.js"></script>
+</body>
+</html>
+
+
+

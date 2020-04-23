@@ -1,0 +1,76 @@
+jQuery(document).ready(function($) {
+  "use strict";
+  //Contact
+  $('form.contactForm').submit(function() {
+    var str = $(this).serialize();
+    var action = $(this).attr('action');
+    if( ! action ) {
+      action = "contactform/sendData.php";
+    }
+    $.ajax({
+      type: "GET",
+      url: action,
+      data: str,
+      success: function(msg) {
+        alert(msg);
+        if (msg == 'OK') 
+		{
+			$("#sendmessage").addClass("show");
+			$("#errormessage").removeClass("show");
+			$('.contactForm').find("input, textarea").val("");
+
+			$("#sendmessage").animate(
+			{
+				height: '+=72px'
+			}, 300);
+		  
+		  $('<div class="alert alert-success" style = "background :#1bb1dc ">' +
+			'<button type="button" class="close" data-dismiss="alert">' +
+			'&times;</button>Your message has been sent. Thank you!</div>').hide().appendTo('#sendmessage').fadeIn(1000);
+		  
+		   $(".alert").delay(3000).fadeOut
+		   (
+			 "normal",function(){
+				$(this).remove();
+				 $("#sendmessage").removeClass("show");
+				}
+			);
+		  $("#sendmessage").delay(4000).animate(
+		  {
+			height: '-=72px'
+		  }, 300);
+					
+		  
+        } else {
+          $("#sendmessage").removeClass("show");
+          $("#errormessage").addClass("show");
+         // $('#errormessage').html(msg);
+		  
+		  $("#errormessage").animate(
+			{
+				height: '+=72px'
+			}, 300);
+		  
+		  $('<div class="alert alert-success style = "background :red ">' +
+			'<button type="button" class="close" data-dismiss="alert">' +
+			'&times;</button>ERROR OCCORED!</div>').hide().appendTo('#errormessage').fadeIn(1000);
+		  
+		   $(".alert").delay(3000).fadeOut
+		   (
+			 "normal",function(){
+				$(this).remove();
+				 $("#errormessage").removeClass("show");
+				}
+			);
+		  $("#errormessage").delay(4000).animate(
+		  {
+			height: '-=72px'
+		  }, 300);
+        }
+
+      }
+    });
+    return false;
+  });
+
+});

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>REGISTER </title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap1.min.css" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style1.css" />
+</head>
+
+<body>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+							<div class="booking-cta">
+								<h1>REGISTER</h1>
+							</div> 
+						</div>
+					<div class="col-md-7 col-md-offset-1">
+						<div class="booking-form">
+						<div class= "subtitle-form" >
+								<h3>PROVIDE DETAILS BELOW </h3>
+							</div>
+							<form role="form" id ="register-form" class="register-form">
+							<div class="row">
+									<div class="col-md-6" id = "name">
+										<div class="form-group">
+											<span class="form-label">name</span>
+											<input class="form-control" name ="name" type="text" required>
+										</div>
+									</div>
+									<div class="col-md-6" id = "Surname">
+										<div class="form-group">
+											<span class="form-label">Surname</span>
+											<input class="form-control" name ="surname" type="text" required>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6" id = "email">
+										<div class="form-group">
+											<span class="form-label">Email</span>
+											<input class="form-control" name ="email" required>
+										</div>
+									</div>
+									<div class="col-md-6" id = "phoneNumber">
+										<div class="form-group">
+											<span class="form-label">Phone Number</span>
+											<input class="form-control" name ="phoneNumber" type="number" required>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6" id ="password">
+										<div class="form-group">
+											<span class="form-label">password</span>
+											<input class="form-control" name ="password" type="password" value="" required>
+										</div>
+									</div>
+									<div class="col-md-6" id ="passwordConfirm">
+										<div class="form-group">
+											<span class="form-label">Confirm password</span>
+											<input class="form-control" name ="passwordConfirm" type="password" value="" required>
+										</div>
+									</div>
+								</div>
+								<div id="response"></div>
+								<div class="form-btn" id="register_Btn">	
+									 <button type="submit" class="submit-btn">SUBMIT</button>
+								</div>
+							
+							</form>
+							<div class = "formLink" id = "login_btn">	
+									<a href = "index.html"> Have account?</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="lib/jquery/jquery.min.js"></script>
+        <script src="lib/jquery/jquery-migrate.min.js"></script>
+	  <script src="js/register.js"></script>
+</body>
+</html>
+
